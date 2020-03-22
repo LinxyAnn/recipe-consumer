@@ -1,6 +1,6 @@
 package com.larecette.recipeconsumer.config;
 
-import com.larecette.recipeconsumer.model.User;
+import com.larecette.recipeconsumer.model.RecipeElastic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -40,8 +40,8 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public ConsumerFactory<String, User> userConsumerFactory() {
-        JsonDeserializer<User> deserializer = new JsonDeserializer<>(User.class);
+    public ConsumerFactory<String, RecipeElastic> recipeConsumerFactory() {
+        JsonDeserializer<RecipeElastic> deserializer = new JsonDeserializer<>(RecipeElastic.class);
         deserializer.setRemoveTypeHeaders(false);
         deserializer.addTrustedPackages("*");
         deserializer.setUseTypeMapperForKey(true);
@@ -57,9 +57,9 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, User> userKafkaListenerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, User> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(userConsumerFactory());
+    public ConcurrentKafkaListenerContainerFactory<String, RecipeElastic> recipeKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, RecipeElastic> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(recipeConsumerFactory());
         return factory;
     }
 

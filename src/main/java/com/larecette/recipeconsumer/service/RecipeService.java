@@ -1,6 +1,6 @@
 package com.larecette.recipeconsumer.service;
 
-import com.larecette.recipeconsumer.model.User;
+import com.larecette.recipeconsumer.model.RecipeElastic;
 import com.larecette.recipeconsumer.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class RecipeService {
      * @param recipeElastic entity with all fields.
      * @return entity after save to database.
      */
-    public User createRecipe(User recipeElastic) {
+    public RecipeElastic createRecipe(RecipeElastic recipeElastic) {
         return recipeRepository.save(recipeElastic);
     }
 }

@@ -1,6 +1,6 @@
 package com.larecette.recipeconsumer.consumer;
 
-import com.larecette.recipeconsumer.model.User;
+import com.larecette.recipeconsumer.model.RecipeElastic;
 import com.larecette.recipeconsumer.service.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -21,9 +21,9 @@ public class KafkaConsumer {
         log.info("Consumed message: " + message);
     }
 
-    @KafkaListener(topics = "UserTest", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
-    public void consumeJson(User user) {
-        recipeService.createRecipe(user);
-        log.info("Consumed JSON message: " + user.toString());
+    @KafkaListener(topics = "RecipeTest", groupId = "group_json", containerFactory = "recipeKafkaListenerFactory")
+    public void consumeJson(RecipeElastic recipeElastic) {
+        recipeService.createRecipe(recipeElastic);
+        log.info("Consumed JSON message: " + recipeElastic.toString());
     }
 }
