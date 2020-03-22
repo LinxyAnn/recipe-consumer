@@ -1,4 +1,4 @@
-package com.larecette.recipecommand.model;
+package com.larecette.recipeconsumer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
